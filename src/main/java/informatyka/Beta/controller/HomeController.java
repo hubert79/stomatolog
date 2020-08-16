@@ -23,8 +23,6 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("userName", "Witaj " + user.getName() + " " + user.getPersonId() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("accountNumber", "Numer konta: " + user.getAccountNumber());
-        modelAndView.addObject("saldo", "Stan Twojego konta: " + user.getSaldo() + "zł");
         modelAndView.addObject("adminMessage","Twoje dane dostępne są tylko po zalogowaniu na Twoje konto :)");
         modelAndView.setViewName("user/home");
         return modelAndView;

@@ -35,21 +35,11 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public Boolean findByAccountNumber(int accountNumber){
-
-        return userRepository.findByAccountNumber(accountNumber);
-    }
-
     public User saveUser(User user){
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
 
-        long counter = userRepository.count();
-
-        user.setAccountNumber(userRepository.count() + 101);
-
-        user.setSaldo(5999.0);
         Role userRole = roleRepository.findByRole("CLIENT");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 
